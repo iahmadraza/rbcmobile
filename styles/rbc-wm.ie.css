@@ -1,0 +1,12 @@
+/* -- rbc-wm.ie.css */
+input[type="text"]::-ms-clear, input::-ms-clear {display: none;width: 0;height: 0;padding: 0;margin: 0;}
+body header.global-header.sticky-header {
+	position: absolute;
+	left: 0;top: 0;right: 0;
+	background-color: white;
+	z-index: 100;
+}
+
+body div.page-wrapper.shift-nav header.global-header.sticky-header {
+	/*right: 300px;*/
+}

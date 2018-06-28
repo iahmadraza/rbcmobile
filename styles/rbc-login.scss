@@ -1,0 +1,403 @@
+
+@charset "UTF-8";
+/* ====== RESET CSS :: Start */
+* {font-family: 'Open Sans', 'Segoe UI', 'Myriad Pro Regular', Arial, sans-serif;box-sizing: border-box;}html{-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;}body{margin: 0;}body,ul,ol{padding: 0;}li,dl,dt,dd{margin: 0;padding: 0;}h1,h2,h3,h4,h5,h6{padding: 0;}hgroup{margin: 0;}hgroup,p{padding: 0;}blockquote,figure,form,fieldset,input,legend,pre,abbr{margin: 0;padding: 0;}pre,code,address,caption,th,figcaption {font-size: 1em;font-weight: normal;font-style: normal;}fieldset,iframe,img{border: 0;}caption,th{text-align: left;}table{border-collapse: collapse;border-spacing: 0;}article,aside,footer,header,nav,main,section,summary,details,hgroup,figure,figcaption{display: block;}audio,canvas,video,progress{display: inline-block;vertical-align: baseline;}
+/* ====== RESET CSS :: End   */
+
+
+/* ====== Import Fonts :: Start */
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');*/
+/* ====== Import Fonts :: End   */
+
+/* ====== Brand Specific Variables :: Start */
+
+/* -- base colors */
+$white : #ffffff;
+$black : #000000;
+
+/* -- brand specific colors */
+$brand-primary-color : rgba(10, 34, 67, 1);
+/*$brand-secondary-color : $brand-primary-color;*/
+$brand-secondary-color : rgba(39, 120, 188, 1);
+
+
+/* //resources - path */
+$images-background-path	: '../images/background/';
+$images-banner-path		: '../images/banner/';
+$images-icon-path		: '../images/icon/';
+$images-loader-path		: '../images/loader/';
+$images-logo-path		: '../images/logo/';
+/* ====== Brand Specific Variables :: End   */
+
+/* ====== COMMON MIXINS :: Start */
+@mixin box-shadow ($shadow-properties...) {
+	@if length($shadow-properties) < 1 {
+		$shadow-properties: 0 1px 3px rgba(0, 0, 0, 0.3);
+	}
+	-webkit-box-shadow: $shadow-properties;
+	-moz-box-shadow: $shadow-properties;
+	box-shadow: $shadow-properties;
+}
+@mixin transition ($properties...) {
+	@if length($properties) < 1 {
+		$properties: all .3s ease-in;
+	}
+	-webkit-transition: -webkit-#{$properties};
+	   -moz-transition: -moz-$properties;
+		-ms-transition: -ms-$properties;
+		 -o-transition: -o-$properties;
+			transition: $properties;
+} /* //transition */
+@mixin transform ($properties...) {
+	-webkit-transform: -webkit-$properties;
+	   -moz-transform: -moz-$properties;
+		-ms-transform: -ms-$properties;
+		 -o-transform: -o-$properties;
+			transform: $properties;
+} /* //transform */
+/* ====== COMMON MIXINS :: Ends */
+.ux-primary {
+  color: $white;
+  background-color: $brand-primary-color;
+  border-color: transparent;
+   text-transform:uppercase;
+
+}/* //.ux-primary */
+/* //.spacer between the div starts*/
+.gspacer15{
+	height:15px;
+}
+/* //.spacer between the div ends*/
+/* ----------------------------
+	Page Wrapper :: Start
+--------------------------- */
+body {
+	overflow: visible;
+	min-width: 300px;
+	&.stick-content {
+		overflow: hidden;
+	} /* //&.stick-content */
+	&.fancy-bg{
+		background: transparent url('#{$images-banner-path}plane-tablet.png') no-repeat center;
+		background-size: cover;
+    	background-attachment: fixed;
+	}/*fancy-bg*/
+} /* //body */
+.page-wrapper {
+	position: relative;
+	z-index: 1;
+	@include transition(all .8s cubic-bezier(0.75, 0, 0.175, 1));
+	&.shift-nav {
+		border:1px solid transparent;
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		overflow: hidden;
+		@include transform(translateX(-300px));
+		/*.wrapper-overlay {display: block;}*/
+	} /* //&.shift-nav */
+	.wrapper-overlay {
+		display: none;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba($black, .3);
+		z-index: 10;
+	} /* //.wrapper-overlay */
+} /* //.page-wrapper */
+/* ----------------------------
+	Page Wrapper :: End 
+--------------------------- */
+/* ----------------------------
+	Global Header :: Start
+--------------------------- */
+header.global-header {
+	background-color: $white;
+	@include box-shadow;
+	.in-header {
+		padding: 20px 0;
+	} /* //.in-header */
+	&.sticky-header {
+		position: fixed;
+		left: 0;right: 0;top: 0;
+		background-color: rgba($white, .9);
+		z-index: 100;
+	} /* //&.sticky-header */
+} /* //header.global-header */
+.sticky-header-spacer {
+	width: 100%;
+	height: 74px;
+	/*background-color: red;*/
+} /* //.sticky-header-spacer */
+.company-logo {
+	float: left;
+    margin: 0 20px;
+	img {
+		height: 32px;
+		margin: 0 auto;
+    	display: block;
+	} /* //img */
+} /* //.company-logo */
+
+/* ----------------------------
+	Global Header :: End
+--------------------------- */
+/* ----------------------------
+	page-content :: Start
+--------------------------- */
+.page-content{
+	position: relative;
+}/*.page-content*/
+.login-container{
+	padding-top: 25px;
+	}/*.login-container*/
+.login-header{
+	h2
+	{
+		color: $brand-primary-color;
+		text-align: center;
+		margin-bottom: 0px;
+		margin-top: 0px;
+		font-size: 30px;
+		line-height: 30px;
+	}/*h2*/
+	span
+	{
+		color:rgba($black, 0.5);
+		text-align: center;
+		display: block;
+   		font-size: 22px;
+	}/*span*/
+	h3
+	{
+		color: $brand-secondary-color;
+		text-align: center;
+		margin-bottom: 0px;
+		margin-top: 0px;
+		font-size: 20px;
+	}/*h3*/
+	.identity-char
+	{
+		color:$brand-primary-color;
+		text-align: center;
+		display: block;
+		font-size: 12px;
+	}/*.identity-char*/
+
+}/*.login-header*/
+
+.form-controller-login{
+	.containerspace{
+	    margin: 10px 10px;
+	    border: 1px solid rgba(0, 0, 0, 0.2);
+	    height: 45px;
+	}/*.containerspace*/
+	.containerspace-submit{
+			 margin: 0px 10px;
+	}
+	input[type=number], input[type=password], select 
+	{
+	    padding: 11px 5px;
+	    display: inline-block;
+	    border: none;
+	    box-sizing: border-box;
+	    float: left;
+	   	width: 85%;
+	    &:focus{
+	    outline: 0;
+	  	webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+	    }
+
+	}/*input[type=text], input[type=password], select */
+	input[type=submit]
+	 {
+	    width: 100%;
+	    color: $white;
+	    padding: 14px 20px;
+	    margin: 8px 0;
+	    border: none;
+	  	cursor: pointer;
+	   
+	  
+	}/*input[type=submit]*/
+	.usericon
+	{
+		background:  rgba($black, 0.1) url('#{$images-icon-path}user.png') no-repeat center;
+  		background-size: 15px;
+  		height: 15px;
+	    padding: 22px 0px;
+	    border-right: 1px solid rgba($black,0.2);
+	    border-right:none;
+	   	box-sizing: border-box;
+	    float: left;
+	    width: 15%;
+	    color: rgba($black, 0.5);
+	}/*.usericon*/
+	.pwdicon
+	{
+		background:  rgba($black, 0.1) url('#{$images-icon-path}pwd.png') no-repeat center;
+  		background-size: 15px;
+  		height: 15px;
+	    padding: 22px 0px;
+	    border-right: 1px solid rgba($black,0.2);
+	    border-right:none;
+	   	box-sizing: border-box;
+	    float: left;
+	    width: 15%;
+	    color: rgba($black, 0.5);
+	}/*.usericon*/
+
+}/*.form-controller-login*/
+.form-controller-identity{
+	position: relative;
+	.containerspace{
+		    margin: 10px 10px;
+		    border: 1px solid rgba(0, 0, 0, 0.2); 
+		    height: 45px;
+	}/*.containerspace*/
+	.containerspace-submit{
+			 margin: 0px 10px;
+	}
+	input[type=text], input[type=password], select 
+	{
+		padding: 6px 0px;
+	    /*margin: 8px 0px;*/
+	    display: inline-block;
+	    border: none;
+	    box-sizing: border-box;
+	    float: left;
+	    text-align: center;
+	   	width: 70%;
+	   	font-size: 22px;
+	    &:focus{
+	    outline: 0;
+	  	webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+	    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+	    }
+
+	}/*input[type=text], input[type=password], select */
+	input[type=submit]
+	 {
+	    width: 100%;
+	    color: $white;
+	    padding: 14px 20px;
+	    margin: 8px 0;
+	    border: none;
+	    cursor: pointer;
+	    
+	  
+	}/*input[type=submit]*/
+	.passwordOne
+	{
+		    padding: 11px 0px;
+		   /* margin: 8px 0px;*/
+		    display: inline-block;
+		    border-right: 1px solid rgba($black,0.2);
+		    border-right:none;
+		   	box-sizing: border-box;
+		    float: left;
+		    text-align: center;
+		    width: 30%;
+		    font-size: 15px;
+		    color: rgba($black, 0.8);
+		    background: rgba($black, 0.1);
+		    em 
+		    {
+		    	padding: 10px 0px;
+		    	font-size: 10px;
+		    	font-style: normal;
+		    } /*em*/
+
+	}/*.passwordOne*/
+	.identitysecurity-char
+	{
+		color:rgba($black, 0.5);
+		text-align: center;
+		display: block;
+   		font-size: 13px;
+	}/*.identitysecurity-char*/
+}/*.form-controller-identity*/
+.weblink-text
+{
+	text-align: center;
+	span{
+		display: block;
+		color: $brand-primary-color;
+		font-weight: bold;
+		a{
+			color: $brand-primary-color;
+			font-weight: normal;
+			text-decoration: none;
+			&:hover{
+				text-decoration: underline;
+				color: darken($brand-primary-color,20%);
+			}
+		}/*a*/
+	}/*span*/
+}/*.weblink-text*/
+/* ----------------------------
+	page-content :: End
+--------------------------- */
+/* ----------------------------
+	agastya code
+--------------------------- */
+.alert {
+		    padding: 15px;
+		   	border: 1px solid transparent;
+		    border-radius: 4px;
+		    margin: 10px;
+		}
+	.alert-danger h3 {margin-top: 0;}
+	.alert-danger {
+				color: #a94442;
+    			background-color: #f2dede;
+    			border-color: #ebccd1;
+    			&.text-center{
+    				text-align:center;
+    				
+    			}
+    			a{
+    				color: #a94442;
+    				&:hover {text-decoration: underline;
+    					color: darken(#a94442,10%);	}
+    				&.session-out {
+	  				background: url('#{$images-icon-path}left-arrow-red.png') no-repeat;
+			  		background-size: 24px;
+			  		height: 24px;
+			  		padding-left: 30px;	
+			  		
+			    }
+    			}
+    			
+			    h2 {
+			    	margin-top: 0;
+			    	margin-bottom: 0;
+			    }
+    		}
+
+    .alert-info {
+			    color: #31708f;
+			    background-color: rgba(39, 120, 188, 0.2);
+			    border-color: #bce8f1;
+			    a{
+	  				background: url('#{$images-icon-path}left-arrow.png') no-repeat;
+			  		background-size: 24px;
+			  		height: 24px;
+			  		padding-left: 30px;	
+			  		&:hover{
+			  			color: $brand-primary-color;
+			  		}
+
+			    }
+			}
+
+
+/* ----------------------------
+	page-content :: End
+--------------------------- */
+
