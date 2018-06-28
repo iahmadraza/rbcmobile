@@ -764,6 +764,20 @@
 			setNavTabtoActivated();
 			navTabSetup();
 			navBarTabSetup();
+
+			//nav fix for desktop 
+			globalnavFixforNavigation();
+			$( window ).resize( function () {
+				globalnavFixforNavigation();
+			} );
+
+			function globalnavFixforNavigation() {
+				$( 'nav.global-nav' ).removeClass( 'nav-showing' );
+				$( 'div.page-wrapper' ).removeClass( 'shift-nav' );
+				$( 'body' ).css( 'overflow', 'auto' );
+				$( 'div.wrapper-overlay' ).hide();
+				$( 'div.glmenu-icon>a.btn-glmenu-icon' ).removeClass( 'menu-active' );
+			};
 		</script>
 	</body>
 </html>

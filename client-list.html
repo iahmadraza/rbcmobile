@@ -408,6 +408,17 @@
 		<script type="text/javascript">
 			// fix header spacer height 
 			glHeaderHeight();
+
+			//nav fix for desktop 
+			globalnavFixforNavigation();
+
+			function globalnavFixforNavigation() {
+				$( 'nav.global-nav' ).removeClass( 'nav-showing' );
+				$( 'div.page-wrapper' ).removeClass( 'shift-nav' );
+				$( 'body' ).css( 'overflow', 'auto' );
+				$( 'div.wrapper-overlay' ).hide();
+				$( 'div.glmenu-icon>a.btn-glmenu-icon' ).removeClass( 'menu-active' );
+			};
 		</script>
 	</body>
 </html>
