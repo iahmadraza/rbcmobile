@@ -411,6 +411,9 @@
 
 			//nav fix for desktop 
 			globalnavFixforNavigation();
+			$( window ).resize( function () {
+				globalnavFixforNavigation();
+			} );
 
 			function globalnavFixforNavigation() {
 				$( 'nav.global-nav' ).removeClass( 'nav-showing' );
